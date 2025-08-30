@@ -90,6 +90,7 @@ Choose series length:
 1) Best of 3
 2) Best of 5
 3) Best of 7
+4) Best of n
 Enter choice [1-3]: 1
 
 --- Round 1 ---
