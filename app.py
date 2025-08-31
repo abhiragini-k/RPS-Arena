@@ -1,5 +1,8 @@
 import random
 
+userScore=0
+botScore=0
+drawScore=0
 
 
 #print(userChoice)
@@ -18,24 +21,33 @@ def play():
         choice="scissor"
 
     while(True):
+        global userScore,botScore,drawScore
         if(choice==botChoice):
             print("Your choice : ",choice)
             print("Bot choice : ",botChoice)
             print("It is a draw")
+            drawScore+=1
+            print(f"Score : User - {userScore} | {botScore} - bot | draw - {drawScore}")
             break
+            
         elif((choice=="rock" and botChoice=="paper")or(choice=="paper" and botChoice=="scissor") or (choice=="scissor" and botChoice=="rock")):
             print("Your choice : ",choice)
             print("Bot choice : ",botChoice)
             print("Bot wins")
+            botScore+=1
+            print(f"Score : User - {userScore} | {botScore} - bot | draw - {drawScore}")
             break
+            
         elif((choice=="rock" and botChoice=="scissor")or(choice=="paper" and botChoice=="rock") or (choice=="scissor" and botChoice=="paper")):
             print("Your choice : ",choice)
             print("Bot choice : ",botChoice)
             print("You win")
+            userScore+=1
+            print(f"Score : User - {userScore} | {botScore} - bot | draw - {drawScore}")   
             break
 
 
-play()
+
 
 def numberOfRounds():
     print("Best out of how many times")
@@ -46,17 +58,25 @@ def numberOfRounds():
 
     n = int(input())
 
-    if(n=="1"):
+    if(n==1):
         return 3
-    elif(n=="2"):
+    elif(n==2):
         return 5
-    elif(n=="3"):
+    elif(n==3):
         return 7
-    elif(n=="4"):
+    elif(n==4):
         m=int(input("Enter the number"))
         return m
     
-def rounds():
-    numberOfRounds()
+class Rounds:
+
+    def __init__(self):
+        self.n=numberOfRounds()
+
+    def rounds(self):
+        for i in range(self.n):
+            play()
     
 
+run = Rounds()
+run.rounds()
